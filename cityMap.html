@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="City Map Viewer" icon-name="utility:world">
+        <div class="slds-p-around_medium">
+            <lightning-layout vertical-align="end">
+                <lightning-layout-item flexibility="grow">
+                    <lightning-input 
+                        label="Enter City Name" 
+                        placeholder="e.g., New York" 
+                        value={cityName} 
+                        onchange={handleCityChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item class="slds-m-left_small">
+                    <lightning-button 
+                        label="Show on Map" 
+                        variant="brand" 
+                        onclick={handleShowMap}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <template if:true={mapMarkers}>
+                <div class="slds-m-top_medium">
+                    <lightning-map 
+                        map-markers={mapMarkers} 
+                        zoom-level="10" 
+                        markers-title={cityName}
+                        list-view="hidden">
+                    </lightning-map>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    {error}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
