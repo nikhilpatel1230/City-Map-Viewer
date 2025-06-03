@@ -3,7 +3,7 @@ public with sharing class cityMapController {
     @AuraEnabled(cacheable=true) 
     public static Map<String,Double> getCoordinatesFromCity(String city){
 
-        String endpoint = 'http://api.positionstack.com/v1/forward?access_key=6b85b8ef2e3ddf701fe7dcb941f0d06c&query=' + EncodingUtil.urlEncode(city, 'UTF-8');
+        String endpoint = 'http://api.positionstack.com/v1/forward?access_key=YOUR_API_KEY&query=' + EncodingUtil.urlEncode(city, 'UTF-8');
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
